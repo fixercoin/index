@@ -1,81 +1,180 @@
-
-:root {
-  --bg-dark: #f5f5f5f5;
-  --bg-light: #151411;
-  --acc-p: #95d5b2;
-  --acc-s: ;
-  --highlight: ;
-}
-
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 body {
-  height: 100vh;
-  width: 100vw;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow-x: hidden;
-  background: #ffffff;
+
+    background-image: url('https://i.postimg.cc/zBgx081C/A-bfd2db.jpg');
+
+    background-size: cover;
+
+    text-align: center;
+
+    font-family: Arial, sans-serif;
+
 }
 
-container {
-  display: flex;
-  flex-direction: column;
-  align-items: start;
-  gap: 1rem;
-  height: 25rem;
-  width: 25rem;
-  border-radius: 2rem;
-  padding: 4rem 2.5rem 4rem 2.5rem;
-  background: var(--bg-dark);
+.container {
+
+    background: rgba(255, 255, 255, 0.8);
+
+    padding: 20px;
+
+    border-radius: 10px;
+
+    display: inline-block;
+
+    margin-top: 50px;
+
+    animation: fadeIn 2s ease-in;
+
 }
 
-line {
-  display: block;
-  height: 2rem;
-  border-radius: 0.75rem;
-  background: linear-gradient(to right, var(--bg-light) 60%,rgba(255,255,255,0.4) 80%,var(--bg-light) 100%);
-  background-size: 200%;
-  background-position: 0% 0%;
-  animation: pulse 1s ease-in-out infinite;
+h1 {
+
+    font-size: 3em;
+
+    animation: fadeInDown 1s ease-out;
+
 }
 
-box {
-  display: block;
-  height: 100%;
-  width: 100%;
-  border-radius: 0.75rem;
-  background: linear-gradient(to right, var(--bg-light) 50%,rgba(255,255,255,0.4) 75%,var(--bg-light) 100%);
-  background-size: 200%;
-  background-position: 0% 0%;
-  animation: pulse 1s ease-in-out infinite;
+
+#tap-coin {
+
+    width: 200px;
+
+    cursor: pointer;
+
+    margin: 20px 0;
+
+    animation: pulse 1s infinite;
+
 }
 
-#l1 {
-  width: 100%;
+#tap-coin:active {
+
+    animation: tap 0.1s;
+
+
+
 }
 
-#l2 {
-  width: 8rem;
+#connect-wallet, #join-telegram {
+
+    display: block;
+
+    margin: 10px auto;
+
+    padding: 10px 20px;
+
+    font-size: 1em;
+
+    animation: fadeInUp 1s ease-out;
+
 }
 
-#l3 {
-  width: 15rem;
+#wallet-address {
+
+    display: block;
+
+    margin: 10px auto;
+
+    padding: 10px;
+
+    font-size: 1em;
+
+    width: 80%;
+
+    animation: fadeInUp 1s ease-out;
+
 }
 
-#l4 {
-  width: 10rem;
+@keyframes fadeIn {
+
+    from {
+
+        opacity: 0;
+
+    }
+
+    to {
+
+        opacity: 1;
+
+    }
+
+}
+
+@keyframes fadeInDown {
+
+    from {
+
+        opacity: 0;
+
+        transform: translateY(-20px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform: translateY(0);
+
+    }
+
+}
+
+@keyframes fadeInUp {
+
+    from {
+
+        opacity: 0;
+
+        transform: translateY(20px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform: translateY(0);
+
+    }
+
 }
 
 @keyframes pulse {
-  100% {
-    background-position: 100% 0%;
-  }
+
+    0%, 100% {
+
+        transform: scale(1);
+
+    }
+
+    50% {
+
+        transform: scale(1.1);
+
+    }
+
 }
-    
+
+@keyframes tap {
+
+    0% {
+
+        transform: scale(1);
+
+    }
+
+    50% {
+
+        transform: scale(0.9);
+
+    }
+
+    100% {
+
+        transform: scale(1);
+
+    }
+
+}
