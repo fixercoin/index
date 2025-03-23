@@ -1,84 +1,114 @@
-let balance = parseFloat(localStorage.getItem('balance')) || 0.0000; // Initialize balance from local storage
-let clickBonus = 0; // Default click bonus
-let isBonusActive = false; // Track if bonus is active
-let bonusDuration = 0; // Time left for bonus
-
-// Daily bonus logic
-const lastBonusDate = localStorage.getItem('lastBonusDate');
-const today = new Date().toISOString().split('T')[0];
-
-if (lastBonusDate !== today) {
-    balance += 0; // Add daily bonus
-    localStorage.setItem('lastBonusDate', today); // Update last bonus date
+ if (localStorage.getItem("theme") === "light") {
+  $("#checkbox").prop("checked", true);
 }
+var themeToggle = document.querySelector(
+  '.theme-switch input[type="checkbox"]'
+);
 
-document.getElementById('balance').innerText = balance.toFixed(4); // Update displayed balance
+function switchTheme(e) {
+  console.log(themeToggle);
+  if (e.target.checked) {
+    document.documentElement.setAttribute("data-theme", "light");
+    localStorage.setItem("theme", "light");
+  } else {
+    document.documentElement.setAttribute("data-theme", "dark");
+    localStorage.setItem("theme", "dark");
+  }
+}
+themeToggle.addEventListener("change", switchTheme, false);
 
-document.getElementById('mineButton').addEventListener('click', () => {
-    balance += 0; // Increment balance by 0.0001 PKR
-    localStorage.setItem('balance', balance); // Save balance to local storage
-    document.getElementById('balance').innerText = balance.toFixed(4); // Update displayed balance
+document.addEventListener("DOMContentLoaded", () => {
+  const root = document.documentElement;
+  const minSize = 12 / 16;
+  const maxSize = 18 / 16;
+  const step = 0.05;
+  const adjustFontSize = (change) => {
+    const currentSize =
+      parseFloat(getComputedStyle(root).getPropertyValue("--fontSize")) || 1;
+    const newSize = Math.max(
+      minSize,
+      Math.min(maxSize, currentSize + change * step)
+    );
+    root.style.setProperty("--fontSize", newSize + "rem");
+    localStorage.setItem("fontSizeDefault", newSize);
+  };
+  const savedSize = localStorage.getItem("fontSizeDefault");
+  if (savedSize) {
+    root.style.setProperty("--fontSize", savedSize + "rem");
+  }
+  window.adjustFontSize = adjustFontSize;
 });
 
-document.getElementById('withdrawButton').addEventListener('click', () => {
-    const password = prompt("JOIN TELEGRAM t.me/pickmoney:");
-    if (password === "Naeem123") {
-        const amount = parseFloat(prompt("PLEASE WAIT ..."));
-        if (amount >= 20 && amount <= balance) {
-            balance -= amount; // Deduct amount from balance
-            alert(`You have withdrawn ${amount.toFixed(4)} PKR!`);
-            localStorage.setItem('balance', balance); // Save balance to local storage
-            document.getElementById('balance').innerText = balance.toFixed(4); // Update displayed balance
-        } else {
-            alert("Invalid amount or insufficient balance!");
-        }
+function toggleMenu(toggleButton, menuContent) {
+  toggleButton.addEventListener("click", function () {
+    const expanded = this.getAttribute("aria-expanded") === "true" || false;
+    this.setAttribute("aria-expanded", !expanded);
+    menuContent.hidden = expanded;
+  });
+}
+const navToggle = document.querySelector(".nav-toggle");
+const navMenu = document.querySelector(".nav-content");
+const menuToggle = document.querySelector(".menu-toggle");
+const menu = document.querySelector(".menu-content");
+const switchToggle = document.querySelector(".switch-toggle");
+const switchMenu = document.querySelector(".switch-content");
+toggleMenu(navToggle, navMenu);
+toggleMenu(menuToggle, menu);
+toggleMenu(switchToggle, switchMenu);
+$(document).ready(function () {
+  var $topbarNav = $("#topbarNav");
+  $(window).scroll(function () {
+    if ($(window).scrollTop() >= 30) {
+      $topbarNav.addClass("scrolled");
     } else {
-        alert("Incorrect password!");
+      $topbarNav.removeClass("scrolled");
     }
+  });
 });
 
-document.getElementById('depositButton').addEventListener('click', () => {
-    const password = prompt("JOIN TELEGRAM t.me/pickmpney:");
-    if (password === "@#$_&-+()/") {
-        const amount = parseFloat(prompt("PACKAGE IS BEING INSTALL(minimum 20 PKR):"));
-        if (amount >= 20) {
-            balance += amount; // Add amount to balance
-            alert(`You have deposited ${amount.toFixed(4)} PKR!`);
-            localStorage.setItem('balance', balance); // Save balance to local storage
-            document.getElementById('balance').innerText = balance.toFixed(4); // Update displayed balance
-        } else {
-            alert("Invalid amount!");
-        }
-    } else {
-        alert("Incorrect password!");
-    }
+let t = document.querySelector("#subaccounts_menu select"),
+  e = t.querySelectorAll("option"),
+  n = `<div class="switch">`;
+e.forEach((t, e) => {
+  if (e !== 0) {
+    // Skip the first option
+    let name = t.innerText.trim().replace(/»/g, ""),
+      value = t.value;
+    n += `
+            <a title="${name}">
+                <label class="switch-block">
+                    <input type="checkbox" value="${value}" onchange="this.form.submit()" name="sub_id" />
+                    <div style="
+                            width: 40px; 
+                            height: 60px; 
+                            border-radius: 0px 8px 8px 0px;
+                            background-size: cover; 
+                            background-position: center; 
+                            background-image: 
+                                url(https://files.jcink.net/uploads2/skinsbyoctober/av-${value}.png), 
+                                url(https://files.jcink.net/uploads2/skinsbyoctober/av-${value}.gif), 
+                                url(https://files.jcink.net/uploads2/skinsbyoctober/av-${value}.jpg), 
+                                url(https://files.jcink.net/uploads2/skinsbyoctober/av-${value}.jpeg), 
+                                url(https://s11.gifyu.com/images/SWRqs.png);
+                             margin: 0px 0px 0px 0px;">
+                    </div>
+                    ${name}
+                </label>
+            </a>`;
+  }
 });
+n += `</div>`;
+t.insertAdjacentHTML("afterend", n);
+t.remove();
 
-document.getElementById('buyPowerButton').addEventListener('click', () => {
-    if (balance >= 100) {
-        balance -= 100; // Deduct cost of power from balance
-        clickBonus += 0.01; // Increase click bonus
-        localStorage.setItem('balance', balance); // Save balance to local storage
-        document.getElementById('balance').innerText = balance.toFixed(4); // Update displayed balance
-        document.getElementById('bonus').innerText = clickBonus.toFixed(4); // Update bonus display
-        alert("You purchased power for 2 hours! Bonus active.");
-        
-        // Start the bonus timer for 2 hours
-        if (!isBonusActive) {
-            isBonusActive = true;
-            bonusDuration = 7200; // 2 hours in seconds
-            const interval = setInterval(() => {
-                if (bonusDuration <= 0) {
-                    clearInterval(interval);
-                    isBonusActive = false;
-                    clickBonus -= 0.01; // Reset click bonus
-                    document.getElementById('bonus').innerText = clickBonus.toFixed(4); // Update bonus display
-                    alert("Your bonus has expired!");
-                }
-                bonusDuration--;
-            }, 1000);
-        }
-    } else {
-        alert("Insufficient balance to buy power!");
-    }
+$(document).ready(function () {
+  $(".tabBtn").on("click", function () {
+    const targetTab = $(this).data("tab");
+    if (!$(`.tab-${targetTab}`).length) return;
+    $(".tabBtn").removeClass("active");
+    $(this).addClass("active");
+    $(".tabContent > div").removeClass("active").hide();
+    $(`.tab-${targetTab}`).addClass("active").fadeIn(200);
+  });
+  $(".tab-1").addClass("active").show();
 });
