@@ -13,7 +13,7 @@ var tokenomicsChart = new Chart(ctx, {
         ],
         datasets: [{
             label: 'Tokenomics',
-            data: [20, 10, 20, 15, 10, 15, 10],
+            data: [10, 20, 20, 10, 10, 10, 20],
             backgroundColor: [
                 '#7F00FF',
                 '#0000FF',
