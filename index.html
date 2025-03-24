@@ -1,228 +1,180 @@
- <!DOCTYPE html>
-<html>
+ <header>
+    <div class="navbar">
+        <img src="https://i.imgur.com/3YN20JO.png" alt="FoodieOnSol Logo" class="logo">
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#tokenomics">Tokenomics</a></li>
+                <li><a href="#roadmap">Roadmap</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#disclaimer">Disclaimer</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
 
-<head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="icon" href="https://icons.veryicon.com/png/o/food--drinks/supermarket-supplies/cherry-44.png" type="image/x-icon" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
-<body class="act-idx code-<!-- |input_CODE| --> group-3">
-
-  <script src="https://files.jcink.net/html/jquery-3.7.1.min.js"></script>
-  <script src="https://files.jcink.net/html/catcollapse.js"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.css" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Cookie&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
-  <script type='text/javascript' src='//files.jcink.net/html/jquery-1.7.2.min.js'></script>
-  <script>
-    const currentTheme = localStorage.getItem("theme");
-    if (currentTheme) {
-      document.documentElement.setAttribute("data-theme", currentTheme);
-    } else {
-      const defaultTheme = "light";
-      document.documentElement.setAttribute("data-theme", defaultTheme);
-      localStorage.setItem("theme", defaultTheme);
-    }
-  </script>
-
-  <wrapper id="outerWrapper">
-    <nav id="topbarNav">
-      <section class="dropdownNav">
-
-        <!-- Avatar -->
-        <div class="loggedInAvatar">
-          <a href="/index.php?act=UserCP&CODE=24" class="avatarLink">
-            <img src='https://files.jcink.net/uploads2/skinsbyoctober//av-1.png?1739129619' border='0' width='350' height='450' alt='' />
-            <div class="uploadText"><i class="ri-export-line"></i></div>
-          </a>
-        </div>
-
-        <!-- Essential links menu -->
-        <div class="popup-navigation">
-          <button class="nav-toggle" aria-expanded="false">
-            <i class="ri-menu-line"></i>
-            <span>Quick Nav</span>
-          </button>
-          <div class="nav-content" hidden>
-            <div class="navTransition">
-              <div class="navTransitionBottom"></div>
-            </div>
-            <div class="memberNav">
-              <a href="/index.php?act=UserCP&CODE=01"><i class="ri-user-settings-line"></i> account settings</a>
-              <a href="/index.php?act=Login&CODE=03&key=1773c769df8360cd3ada9596e5cee09c"><i class="ri-logout-circle-r-line"></i> logout</a>
-            </div>
-            <div class="guestNav" style="display: none;">
-              <a href="/index.php?act=Login&CODE=00"><i class="ri-login-circle-line"></i> login</a>
-              <a href="/index.php?act=Reg&CODE=00"><i class="ri-add-circle-line"></i> register</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Account switcher menu -->
-        <div class="switch-menu">
-          <button class="switch-toggle" aria-expanded="false">
-            <i class="ri-shuffle-line"></i>
-            <span>Switch accounts</span>
-          </button>
-          <div class="switch-content" hidden>
-            <div class="navTransition">
-              <div class="navTransitionBottom"></div>
-            </div>
-            <span class="popupTitle">Logged in as: <b>
-                October
-              </b></span>
-
-            <span id='subaccounts_menu'>
-              <form action='https://skinsbyoctober.jcink.net/index.php?&act=Login&CODE=01&CookieDate=1' name='subswitch' method='POST'>
-                <input type='hidden' name='auth_key' value='1773c769df8360cd3ada9596e5cee09c'>
-                <input type='hidden' name='UserName' value='subacct'>
-                <input type='hidden' name='PassWord' value='subacct'>
-                <input type='hidden' name='referer' value='' />
-                <select class='forminput' name='sub_id' onchange='this.form.submit()'>
-                  <option value='------------' selected='selected'>Switch Account</option>
-                  <option value='3'>&nbsp;&nbsp;&raquo; New Account </option>
-                </select>
-              </form>
-            </span>
-
-          </div>
-        </div>
-
-        <!-- "Accessibility" menu -->
-        <div class="accessibility-menu">
-          <button class="menu-toggle" aria-expanded="false">
-            <i class="ri-accessibility-line"></i>
-            <span>Accessibility</span>
-          </button>
-          <div class="menu-content" hidden>
-            <div class="navTransition">
-              <div class="navTransitionBottom"></div>
-            </div>
-            <label class="theme-switch" for="checkbox" id="theme_switch_click">
-              <input type="checkbox" id="checkbox">
-              <span class="dark"><i class="ri-lightbulb-flash-line"></i> Light Theme</span>
-              <span class="light"><i class="ri-lightbulb-line"></i> Dark Theme</span>
-            </label>
-            <button onclick="adjustFontSize(0.2)"><i>A+</i> Font Size</button>
-            <button onclick="adjustFontSize(-0.2)"><i>A-</i> Font Size</button>
-          </div>
-        </div>
-      </section>
-
-      <!-- Guest Links -->
-      <section id="guestView" style="display: none;">
-        <a href="/index.php?act=Login&CODE=00" class="guestView">
-          <i class="ri-login-circle-line"></i>
-          <span>log in</span>
-        </a>
-        <a href="/index.php?act=Reg&CODE=00" class="guestView">
-          <i class="ri-add-circle-line"></i>
-          <span>register</span>
-        </a>
-      </section>
-
-      <!-- Member Links -->
-      <section id="memberView">
-        <!-- Admin Links -->
-        <a href="/admin.php?" target="_blank" class="adminView" style="display: none;">
-          <i class="ri-settings-5-line"></i>
-          <span>Admin CP</span>
-        </a>
-        <a href="/?act=modcp" target="_blank" class="adminView" style="display: none;">
-          <i class="ri-settings-5-line"></i>
-          <span>Mod CP</span>
-        </a>
-
-        <a href="/index.php?act=UserCP&CODE=alerts" class="notifications alert-0">
-          <i class="ri-notification-2-line"></i>
-          <span class="alert">
-            0
-          </span>
-        </a>
-        <a href="/index.php?act=Msg&CODE=01" class="messages alert-0">
-          <i class="ri-mail-line"></i>
-          <span class="alert">
-            0
-          </span>
-        </a>
-      </section>
-    </nav>
-
-    <nav id="boardNav">
-      <div id='navstrip' align='left'><span class="navStart">Cherry Cola</span>&nbsp;<a href='https://skinsbyoctober.jcink.net/index.php?act=idx'>Skins by October</a></div>
-      <br />
-      <br />
-    </nav>
-
-    <section id="headerSection">
-      <header id="boardHeader">
-        <span class="topTag">
-          <!-- Tabs -->
-          <div class="tabControls">
-            <button class="tabBtn active" data-tab="1"><i class="ri-folder-info-line"></i></button>
-            <button class="tabBtn" data-tab="2"><i class="ri-calendar-check-line"></i></button>
-            <button class="tabBtn" data-tab="3"><i class="ri-team-line"></i></button>
-          </div>
-          dirty, <b>dizzy,</b> doubled over
-        </span>
-        <span class="bottomTag">
-          <span class="upperText"> I can't sleep,</span>
-          <span class="lowerText">can you come over?</span>
-        </span>
-        <span class="headerSubtitle">god, i miss my</span>
-        <span class="headerTitle">cherry cola</span>
-
-      </header>
-
-      <div class="tabContent">
-        <div class="tab-1 active">
-          <div class="tabAbout">
-            <span class="topTag"><i class="ri-git-repository-line"></i></span>
-            <span class="aboutTitle">cherry cola</span>
-            <b>600 dollars to fix my car <strong>worth every penny</strong> to get to you, somebody's daughter on bass guitar - nobody chokes me up the way you do. </b>
-            <div class="aboutTransition"></div>
-
-            600 dollars to fix my car worth every penny to get to you, somebody's daughter on bass guitar - nobody chokes me up the way you do. Loving you is just like sipping on straight, syrup, sugar, sticky soda; cover me in candy <strong>I'm so lucky that I get to know ya.</strong> I get fucking sick without you: dirty, dizzy, doubled over. I can't sleep can you come over? God, I miss my Cherry Cola. I miss my Cherry Cola. 600 dollars to fix my car worth every penny to get to you, somebody's daughter on bass guitar - nobody chokes me up the way you do.
-          </div>
-        </div>
-
-        <div class="tab-2">
-          <div class="lastAnnouncement">
-            <span class="topTag"><i class="ri-flag-line"></i></span>
-            <span class="announcementTitle"><b>01.25</b> announcement </span>
-            <span class="announcementDesc">Six hundred dollars to fix my car, <strong>worth every penny</strong> to get to you. <a href="#" class="redirectLink"><i class="ri-external-link-line"></i> view more</a></span>
-          </div>
-          <div class="spacer">
-            <div class="spacertransition"></div>
-          </div>
-          <div class="lastEvent">
-            <span class="bottomTag"><i class="ri-calendar-event-fill"></i></span>
-            <span class="eventTitle"><b>01.25</b> event </span>
-            <span class="announcementEvent"><img src="https://s3.gifyu.com/images/bbQyG.webp"> <a href="#" class="redirectLink"><i class="ri-external-link-line"></i> view more</a></span>
-          </div>
-        </div>
-
-        <div class="tab-3">
-          <p>This is content for Tab 3.</p>
-        </div>
-      </div>
-    </section>
-
-    <div id="boardBetween">
-      <spacer></spacer>
-      <div id="boardTransition">
-        <div id="boardTransitionAlt"></div>
-      </div>
-      <spacer></spacer>
+<head>
+<section class="hero">
+    <div class="hero-text">
+        <h1>Welcome to FoodieOnSol</h1>
+        <p>Join the vibrant, fun, engaging and rewarding community, where food lovers and meet crypto enthusiasts.</p>
     </div>
+</section>
 
-    <wrapper id="boardWrapper">
+<section id="about">
+    <div class="content-wrapper">
+        <h2>Executive Summary</h2>
+        <p>FoodieOnSol is a unique memecoin project on the Solana blockchain designed to create a vibrant and engaging community around the love for food and crypto. Our mission is to bring fun and excitement to the crypto space while providing real value and utility to our users.</p>
 
-    </wrapper>
-  </wrapper>
+        <h2>Introduction</h2>
+        <p>In a world where food and digital assets merge, FoodieOnSol stands out as a memecoin that celebrates culinary delights and utilizes the fast and efficient Solana blockchain. Our goal is to build a strong, active community of food lovers and crypto enthusiasts who can engage, share, and earn together.</p>
 
-</body>
+        <h2>Vision and Mission</h2>
+        <p><strong>Vision:</strong> To be the leading food-themed memecoin on the Solana blockchain, known for its vibrant community and innovative approach to community engagement and rewards.</p>
+        <p><strong>Mission:</strong> To create an ecosystem where users can earn, trade, and enjoy the benefits of a decentralized, food-themed cryptocurrency while actively contributing to the growth and visibility of the project.</p>
+    </div>
+</section>
 
-</html>
+<section id="tokenomics">
+    <div class="content-wrapper">
+        <h2>Tokenomics</h2>
+        <ul>
+            <li><strong>Token Name:</strong> FoodieOnSol</li>
+            <li><strong>Symbol:</strong> $FOODIE</li>
+            <li><strong>Network:</strong> Solana</li>
+            <li><strong>Total Supply:</strong> 5,000,000,000 $FOODIE</li>
+            <li><strong>Community Airdrop:</strong> 20% (1,000,000,000 $FOODIE)</li>
+            <li><strong>Presale Allocation:</strong> 10% (500,000,000 $FOODIE)</li>
+            <li><strong>Liquidity Pool and CEx Listing:</strong> 20% (1,000,000,000 $FOODIE)</li>
+            <li><strong>Marketing and Partnerships:</strong> 15% (750,000,000 $FOODIE)</li>
+            <li><strong>Community incentives:</strong> 10% (500, 000, 000 $FOODIE)</li>
+            <li><strong>Treasury and Development Funds:</strong> 15% (750,000,000 $FOODIE)</li>
+            <li><strong>Team:</strong> 10% (500,000,000 $FOODIE)</li>
+          <div class="content-wrapper">
+  
+    <!-- Tokenomics information goes here -->
+
+    <!-- Pie chart container -->
+  
+    <canvas id="tokenomicsChart" width="400" height="400"></canvas>
+</div>
+
+        </ul>
+        <h3>Airdrop and Team's allocation Vesting Information</h3>
+        <table>
+            <tr>
+                <th>Phase</th>
+                <th>Detail</th>
+                <th>Allocation</th>
+                <th>Cliff Period</th>
+                <th>Vesting Period</th>
+            </tr>
+            <tr>
+                <td>Airdrop Phase 1</td>
+                <td>Presale Participants Airdrop</td>
+                <td>30% of airdrop allocation</td>
+                <td>No Cliff</td>
+                <td>6 Months</td>
+            </tr>
+            <tr>
+                <td>Airdrop Phase 2</td>
+                <td>General Community Airdrop</td>
+                <td>15% of airdrop allocation</td>
+                <td>No Cliff</td>
+                <td>No vesting</td>
+            </tr>
+            <tr>
+                <td>Airdrop Phase 3</td>
+                <td>Active community contributors</td>
+                <td>20% of airdrop allocation</td>
+                <td>No Cliff</td>
+                <td>3 Months</td>
+            </tr>
+            <tr>
+                <td>Airdrop Phase 4</td>
+                <td>$Foodie Holders Airdrop</td>
+                <td>35% of airdrop allocation</td>
+                <td>1 Month Cliff</td>
+                <td>6 Months</td>
+            </tr>
+            <tr>
+                <td>Team's allocation</td>
+                <td> </td>
+                <td>10% total supply</td>
+                <td>3 Months</td>
+                <td>12 months</td>
+              </tr>
+            
+        </table>
+    </div>
+</section>
+
+<section id="roadmap">
+    <div class="content-wrapper">
+        <h2>Roadmap</h2>
+        <ul>
+            <li><strong>Phase 1:</strong> 
+              <p>✓ Launch of Twitter account and telegram community</p> 
+              <p>✓ Development and launch of website</p>
+              <p>• Deployment of initial token and smart contracts.</li>
+            <li><strong>Phase 2:</strong> 
+              <p>• Token presale</p>
+              <p>• Airdrop Phase 1</p>
+              <p>• Listing $FOODIE on decentralized exchanges</p>
+              <p>• Launch of Foodies discord server</p>
+              <p>• Launch of community engagement initiatives</p></li>
+            <li><strong>Phase 3:</strong>
+              <p>• Expansion of marketing</p>
+              <p>• Launch of Foodies' Tiktok, Instagram and YouTube</p>
+              <p>• Formation of strategic partnerships</p>
+              <p>• Development an launch of gaming platform (Beta phase). </p>
+              <p>• Launching of additional features and utilities for $FOODIE holders.</p>
+              </li>
+            <li><strong>Phase 4:</strong> 
+              <p>• Launch of Foodie newsletter</p>
+              <p>• Developmemt and release of gaming platform (Main phase) </p>               
+              <p>• Integration of NFTs for $FOODIE gamers' revenue generation.</p> 
+              <p>• Further airdrop phases.</p>
+              </li>
+          <li><strong>Phase 5:</strong>
+            <p>• Launch of Foodies Academy</p>
+            <p>• Top Tier 1 Exchange Listing</p>
+            <p>• Continuous Marketing and Community Engagement Initiatives </p>
+        </ul>
+    </div>
+</section>
+<section id="conclusion" class="conclusion-section">
+    <h2>Conclusion</h2>
+    <p>
+        FoodieOnSol is more than just a memecoin; it is a community-driven project that brings
+        together food lovers and crypto enthusiasts. By using the Solana blockchain, we aim to create
+        a fun and rewarding ecosystem. Join us on this exciting journey and become part of the
+        FoodieOnSol family.
+    </p>
+</section>
+</section>
+<section id="disclaimer">
+  <div class="disclamer-section">
+         <h2>Disclaimer</h2>
+  <p>
+    The information provided by the FoodieOnSol project is for general informational purposes only. All content, including token-related details, community activities, and rewards, is provided in good faith; however, we make no representation or warranty of any kind, express or implied, regarding the accuracy, adequacy, validity, reliability, availability, or completeness of any information on the website, social media, or within the community.
+
+The $FOODIE token is a digital asset with inherent risks, and its value can fluctuate widely. Participation in our community activities or token-related projects is voluntary and should be done with a full understanding of these risks. We do not offer financial or investment advice, and you should consult with a professional before making any financial decisions.
+
+By participating in our project, you acknowledge that you do so at your own risk, and FoodieOnSol, its team members, and associated entities shall not be liable for any direct, indirect, incidental, or consequential loss or damage incurred as a result of your participation in the project.
+</p>
+<footer id="contact">
+    <div class="footer-content">
+        <div class="social-links">
+            <a href="https://x.com/FoodieOnSol?s=09" target="_blank"><img src="https://i.imgur.com/DGB97Yb.jpeg" alt="X (Twitter)" class="social-icon"></a>
+            <a href="https://www.linkedin.com/company/foodieonsol/" target="_blank"><img scr="https://i.imgur.com/CLRmmeQ.png" alt="LinkedIn" class="social-icon"></a>
+            <a href="https://t.me/FoodieOnSol_EnglishChat" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram Group" class="social-icon"></a>
+            <a href="https://t.me/FoodieOnSol_anounceneentChannel" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram Announcement" class="social-icon"></a>
+        </div>
+        <p>&copy; 2024 FoodieOnSol. All Rights Reserved.</p>
+        <a href="#" class="disclaimer-link">Disclaimer</a>
+    </div>
+</footer>
