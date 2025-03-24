@@ -74,28 +74,7 @@
     <!-- Pie chart container -->
   
     <canvas id="tokenomicsChart" width="400" height="400"></canvas>
-<script>
- import javax.swing.*;
-import java.awt.*;
 
-public class CanvasExample extends JFrame {
-    public CanvasExample() {
-        setTitle("tokenomicsChart");
-        setSize(400, 400);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        add(new Canvas() {
-            public void paint(Graphics g) {
-                g.setColor(Color.red);
-                g.fillOval(50, 50, 100, 100);
-            }
-        });
-    }
-
-    public static void main(String[] args) {
-        new CanvasExample().setVisible(true);
-    }
-}
-</script>
            <script>
              var ctx = document.getElementById('tokenomicsChart').getContext('2d');
 var tokenomicsChart = new Chart(ctx, {
