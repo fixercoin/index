@@ -73,51 +73,9 @@
 
     <!-- Pie chart container -->
   
-    <canvas id="tokenomicsChart" width="400" height="400"></canvas>
+    <img chart.jpg>
 
-           <script>
-             var ctx = document.getElementById('tokenomicsChart').getContext('2d');
-var tokenomicsChart = new Chart(ctx, {
-    type: 'pie',
-    data: {
-        labels: [
-            'Community Airdrop',
-            'Presale Allocation',
-            'Liquidity Pool and CEx Listing',
-            'Marketing and Partnerships',
-            'Communuty incentives',
-            'Treasury and Development Funds',
-            'Team'
-        ],
-        datasets: [{
-            label: 'Tokenomics',
-            data: [10, 20, 20, 10, 10, 10, 20],
-            backgroundColor: [
-                '#7F00FF',
-                '#0000FF',
-                '#808080',
-                '#808000',
-                '#D0021B',
-                '#FFFF00',
-                '#964B00'
-            ],
-            hoverOffset: 4
-        }]
-    },
-    options: {
-        responsive: true,
-        plugins: {
-            legend: {
-                position: 'top',
-            },
-            title: {
-                display: true,
-                text: 'Tokenomics Distribution'
-            }
-        }
-    }
-});
-           </script>
+           
           </div>
 
         </ul>
