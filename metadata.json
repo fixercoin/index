@@ -5,7 +5,7 @@ const metadataPDA = await findMetadataPda(mintKeypair.publicKey); // This is der
 const tokenMetadata = {
         name: "FIXERCOIN", 
         symbol: "FIXERCOIN",
-        uri: https://token-creator-lac.vercel.app/token_metadata.json,
+        uri: https://i.postimg.cc/CMswCb0r/fixercoin-solana-removebg-preview.png,
         sellerFeeBasisPoints: 0,
         creators: null,
         collection: null,
