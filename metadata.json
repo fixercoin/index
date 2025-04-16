@@ -1,1 +1,29 @@
-m
+import { DataV2, createCreateMetadataAccountV2Instruction } from '@metaplex-foundation/mpl-token-metadata';
+import { findMetadataPda } from '@metaplex-foundation/js';
+
+const metadataPDA = await findMetadataPda(mintKeypair.publicKey); // This is derived from the mint account's public key
+const tokenMetadata = {
+        name: "FIXERCOIN", 
+        symbol: "FIXERCOIN",
+        uri: https://token-creator-lac.vercel.app/token_metadata.json,
+        sellerFeeBasisPoints: 0,
+        creators: null,
+        collection: null,
+        uses: null
+      } as DataV2;
+const createNewTokenTransaction = new Transaction().add(
+        createCreateMetadataAccountV2Instruction({
+            metadata: metadataPDA,
+            mint: mintPublicKey,
+            mintAuthority: userPublicKey,
+            payer: userPublicKey,
+            updateAuthority: userPublicKey,
+          },
+          { createMetadataAccountArgsV2: 
+            { 
+              data: tokenMetadata, 
+              isMutable: true 
+            } 
+          }
+        )
+await sendTransaction(createNewTokenTransaction, connection);
