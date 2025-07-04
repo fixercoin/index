@@ -1,11 +1,11 @@
-
+ # Auto Buy Sell Order Executor
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LOCKER WALLET</title>
+    <title>Auto Buy Sell Order Executor</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -33,7 +33,7 @@
 </head>
 <body>
 
-    <h1>LOCKER WALLET</h1>
+    <h1>Auto Buy Sell Order Executor</h1>
     <div id="executor">
         <input type="text" id="token" placeholder="Token Address" value="H4qKn8FMFha8jJuj8xMryMqRhH3h7GjLuxw7TVixpump">
         <input type="number" id="amount" placeholder="Amount">
@@ -93,7 +93,6 @@
             const fees = calculateFees(price, amount); // Implement this function to calculate fees
             showTransactionFees(fees);
 
-            // Example API call to mintme.com (replace with actual API)
             const response = await fetch(`https://api.mintme.com/order/${action}`, {
                 method: 'POST',
                 headers: {
