@@ -33,7 +33,7 @@
 </head>
 <body>
 
-    <h1>Buy Sell Order Executor</h1>
+    <h1>Auto Buy Sell Order Executor</h1>
     <div id="executor">
         <input type="text" id="token" placeholder="Token Address" value="H4qKn8FMFha8jJuj8xMryMqRhH3h7GjLuxw7TVixpump">
         <input type="number" id="amount" placeholder="Amount">
@@ -92,6 +92,9 @@
             const price = await fetchTokenPrice();
             const fees = calculateFees(price, amount); // Implement this function to calculate fees
             showTransactionFees(fees);
+
+            const confirmation = confirm(`Are you sure you want to ${action} ${amount} of ${token}?`);
+            if (!confirmation) return;
 
             const response = await fetch(`https://api.mintme.com/order/${action}`, {
                 method: 'POST',
